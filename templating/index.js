@@ -19,6 +19,15 @@ app.get('/cats', (req, res) => {
     res.render('cats', { cats })
 })
 
+app.get('/r/:subreddit', (req, res) => {
+    const { subreddit } = req.params;
+    const data = redditData[subreddit];
+    if (data) {
+        res.render('subreddit', { ...data });
+    } else {
+        res.render('notfound', { subreddit })
+    }
+})
 
 app.listen(3000, () => {
     console.log("LISTENING ON PORT 3000")
