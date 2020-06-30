@@ -10,14 +10,6 @@ app.use(methodOverride('_method'))
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
-
-// GET /comments - list all comments
-// POST /comments - Create a new comment 
-// GET /comments/:id - Get one comment (using ID)
-// PATCH /comments/:id - Update one comment
-// DELETE /comments/:id - Destroy one comment
-
-
 // Our fake database:
 let comments = [
     {
@@ -41,6 +33,15 @@ let comments = [
         comment: 'woof woof woof'
     }
 ]
+// GET /comments - list all comments
+app.get('/comments', (req, res) => {
+    res.render('comments/index', { comments });
+})
+// GET /comments/new - renders a form
+app.get('/comments/new', (req, res) => {
+    res.render('comments/new');
+})
+
 
 app.get('/tacos', (req, res) => {
     res.send("GET /tacos response")
