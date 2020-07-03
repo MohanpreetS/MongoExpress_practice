@@ -42,6 +42,16 @@ app.get('/comments/new', (req, res) => {
     res.render('comments/new');
 })
 
+// POST /comments - Create a new comment 
+app.post('/comments', (req, res) => {
+    const { username, comment } = req.body;
+    comments.push({ username, comment, id: uuid() })
+    res.redirect('/comments');
+})
+
+// GET /comments/:id - Get one comment (using ID)
+// PATCH /comments/:id - Update one comment
+// DELETE /comments/:id - Destroy one comment
 
 app.get('/tacos', (req, res) => {
     res.send("GET /tacos response")
