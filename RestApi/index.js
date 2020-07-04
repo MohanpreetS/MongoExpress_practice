@@ -50,6 +50,12 @@ app.post('/comments', (req, res) => {
 })
 
 // GET /comments/:id - Get one comment (using ID)
+app.get('/comments/:id', (req, res) => {
+    const { id } = req.params;
+    const comment = comments.find(c => c.id === id);
+    res.render('comments/show', { comment })
+})
+
 // PATCH /comments/:id - Update one comment
 // DELETE /comments/:id - Destroy one comment
 
