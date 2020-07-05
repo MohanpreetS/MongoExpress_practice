@@ -56,8 +56,22 @@ app.get('/comments/:id', (req, res) => {
     res.render('comments/show', { comment })
 })
 
+// Get /comments/:id/edit - Show form to edit the comment
+app.get('/comments/:id/edit', (req, res) => {
+    const { id } = req.params;
+    const comment = comments.find(c => c.id === id);
+    res.render('comments/edit', { comment })
+})
 // PATCH /comments/:id - Update one comment
-// DELETE /comments/:id - Destroy one comment
+app.patch('/comments/:id', (req, res) => {
+    const { id } = req.params;
+    const foundComment = comments.find(c => c.id === id);
+
+    const newCommentText = req.body.comment;
+    foundComment.comment = newCommentText;
+    res.redirect('/comments')
+})
+
 
 app.get('/tacos', (req, res) => {
     res.send("GET /tacos response")
