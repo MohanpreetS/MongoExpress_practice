@@ -19,5 +19,25 @@ const productSchema = new mongoose.Schema({
         required: true,
         min: [0, 'Price must be positive ya dodo!']
     },
+    onSale: {
+        type: Boolean,
+        default: false
+    },
+    categories: [String],
+    qty: {
+        online: {
+            type: Number,
+            default: 0
+        },
+        inStore: {
+            type: Number,
+            default: 0
+        }
+    },
+    size: {
+        type: String,
+        enum: ['S', 'M', 'L']
+    }
+
 });
 
