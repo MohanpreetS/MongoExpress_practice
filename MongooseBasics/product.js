@@ -41,11 +41,15 @@ const productSchema = new mongoose.Schema({
 
 });
 
-productSchema.methods.greet = function () {
-    console.log("HELLLO!!! HI!! HOWDY!!! ")
-    console.log(`- from ${this.name}`)
-}
+// productSchema.methods.greet = function () {
+//     console.log("HELLLO!!! HI!! HOWDY!!! ")
+//     console.log(`- from ${this.name}`)
+// }
 
+productSchema.methods.toggleOnSale = function () {
+    this.onSale = !this.onSale;
+    return this.save();
+}
 
 // const bike = new Product({ name: 'Cycling Jersey', price: 28.50, categories: ['Cycling'], size: 'XS' })
 // bike.save()
