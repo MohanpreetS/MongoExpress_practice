@@ -51,6 +51,20 @@ productSchema.methods.toggleOnSale = function () {
     return this.save();
 }
 
+
+productSchema.methods.addCategory = function (newCat) {
+    this.categories.push(newCat);
+    return this.save();
+}
+
+const Product = mongoose.model('Product', productSchema);
+
+
+
+// Product.fireSale().then(res => console.log(res))
+
+// findProduct();
+
 // const bike = new Product({ name: 'Cycling Jersey', price: 28.50, categories: ['Cycling'], size: 'XS' })
 // bike.save()
 //     .then(data => {
