@@ -57,13 +57,27 @@ productSchema.methods.addCategory = function (newCat) {
     return this.save();
 }
 
+productSchema.statics.fireSale = function () {
+    return this.updateMany({}, { onSale: true, price: 0 })
+}
+
+
 const Product = mongoose.model('Product', productSchema);
 
 
+const findProduct = async () => {
+    const foundProduct = await Product.findOne({ name: 'Mountain Bike' });
+    console.log(foundProduct)
+    await foundProduct.toggleOnSale();
+    console.log(foundProduct)
+    await foundProduct.addCategory('Outdoors')
+    console.log(foundProduct)
+}
 
-// Product.fireSale().then(res => console.log(res))
+Product.fireSale().then(res => console.log(res))
 
-// findProduct();
+findProduct();
+
 
 // const bike = new Product({ name: 'Cycling Jersey', price: 28.50, categories: ['Cycling'], size: 'XS' })
 // bike.save()
