@@ -74,9 +74,9 @@ const findProduct = async () => {
     console.log(foundProduct)
 }
 
-Product.fireSale().then(res => console.log(res))
+// Product.fireSale().then(res => console.log(res))
 
-findProduct();
+// findProduct();
 
 
 // const bike = new Product({ name: 'Cycling Jersey', price: 28.50, categories: ['Cycling'], size: 'XS' })
