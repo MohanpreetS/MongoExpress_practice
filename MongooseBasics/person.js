@@ -22,7 +22,9 @@ personSchema.pre('save', async function () {
     this.last = 'MAMA';
     console.log("ABOUT TO SAVE!!!!")
 })
-
+personSchema.post('save', async function () {
+    console.log("JUST SAVED!!!!")
+})
 
 
 const Person = mongoose.model('Person', personSchema);
