@@ -17,3 +17,17 @@ mongoose.connect('mongodb://localhost:27017/farmStand', { useNewUrlParser: true,
     })
 
 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'))
+
+const categories = ['fruit', 'vegetable', 'dairy'];
+
+
+app.listen(3000, () => {
+    console.log("APP IS LISTENING ON PORT 3000!")
+})
+
+
