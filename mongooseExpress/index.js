@@ -36,6 +36,18 @@ app.get('/products', async (req, res) => {
     }
 })
 
+app.get('/products/new', (req, res) => {
+    res.render('products/new', { categories })
+})
+
+
+app.delete('/products/:id', async (req, res) => {
+    const { id } = req.params;
+    const deletedProduct = await Product.findByIdAndDelete(id);
+    res.redirect('/products');
+})
+
+
 
 app.listen(3000, () => {
     console.log("APP IS LISTENING ON PORT 3000!")
