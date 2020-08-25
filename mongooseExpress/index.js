@@ -46,6 +46,11 @@ app.post('/products', async (req, res) => {
     res.redirect(`/products/${newProduct._id}`)
 })
 
+app.get('/products/:id', async (req, res) => {
+    const { id } = req.params;
+    const product = await Product.findById(id)
+    res.render('products/show', { product })
+})
 
 app.delete('/products/:id', async (req, res) => {
     const { id } = req.params;
