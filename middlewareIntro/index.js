@@ -53,6 +53,11 @@ app.get('/secret', verifyPassword, (req, res) => {
     res.send('MY SECRET IS: Sometimes I wear headphones in public so I dont have to talk to anyone')
 })
 
+app.use((req, res) => {
+    res.status(404).send('NOT FOUND!')
+})
+
+
 app.listen(3000, () => {
     console.log('App is running on localhost:3000')
 })
