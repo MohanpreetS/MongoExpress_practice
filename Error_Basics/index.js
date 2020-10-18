@@ -22,8 +22,7 @@ const verifyPassword = (req, res, next) => {
     if (password === 'chickennugget') {
         next();
     }
-    res.send("PASSWORD NEEDED!")
-    throw new AppError('Password required!', 400)
+    throw new AppError('password required', 401);
 }
 
 app.get('/', (req, res) => {
@@ -47,6 +46,12 @@ app.get('/secret', verifyPassword, (req, res) => {
 app.use((req, res) => {
     res.status(404).send('NOT FOUND!')
 })
+
+app.use((err, req, res, next) => {
+    const { status = 500, message = 'Something Went Wrong' } = err;
+    res.status(status).send(message)
+})
+
 
 app.listen(3000, () => {
     console.log('App is running on localhost:3000')
