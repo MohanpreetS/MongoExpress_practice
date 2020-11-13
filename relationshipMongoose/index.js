@@ -72,8 +72,6 @@ app.post('/farms/:id/products', async (req, res) => {
     res.redirect(`/farms/${id}`)
 })
 
-
-
 // PRODUCT ROUTES
 
 app.get('/products', async (req, res) => {
