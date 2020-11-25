@@ -4,6 +4,7 @@ const shelterRoutes = require('./routes/shelters');
 const dogRoutes = require('./routes/dogs');
 const adminRoutes = require('./routes/admin')
 
+app.use('/shelters', shelterRoutes);
 app.use('/dogs', dogRoutes);
 
 app.listen(3000, () => {
