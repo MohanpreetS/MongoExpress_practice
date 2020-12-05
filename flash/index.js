@@ -49,7 +49,7 @@ app.get('/farms/:id', async (req, res) => {
 app.post('/farms', async (req, res) => {
     const farm = new Farm(req.body);
     await farm.save();
-    req.flash('success', 'Successfully made a new farm!');
+    req.flash('success', 'Successfully  made a new farm!');
     res.redirect('/farms')
 })
 
