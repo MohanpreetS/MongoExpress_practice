@@ -3,9 +3,11 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const session = require('express-session');
+const flash = require('connect-flash');
 
 const sessionOptions = { secret: 'thisisnotagoodsecret', resave: false, saveUninitialized: false }
 app.use(session(sessionOptions));
+app.use(flash());
 
 const Farm = require('./models/farm')
 
@@ -47,6 +49,7 @@ app.get('/farms/:id', async (req, res) => {
 app.post('/farms', async (req, res) => {
     const farm = new Farm(req.body);
     await farm.save();
+    req.flash('success', 'Successfully made a new farm!');
     res.redirect('/farms')
 })
 
